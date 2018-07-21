@@ -1,4 +1,4 @@
-FROM fluent/fluentd:v1.2.3-onbuild
+FROM fluent/fluentd:v0.12.43-onbuild
 
 COPY fluent-plugin-buffer-output-stub-0.0.1.gem /fluent-plugin-buffer-output-stub-0.0.1.gem
 
