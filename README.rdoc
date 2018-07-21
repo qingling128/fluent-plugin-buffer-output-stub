@@ -1,0 +1,8 @@
+== How to build the Docker image
+
+git clone https://github.com/qingling128/fluent-plugin-buffer-output-stub.git
+cd fluent-plugin-buffer-output-stub
+gem build fluent-plugin-buffer-output-stub.gemspec
+mv fluent-plugin-buffer-output-stub-*.gem docker/
+cd docker
+docker build --no-cache .
