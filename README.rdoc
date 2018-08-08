@@ -1,0 +1,8 @@
+Prerequisite:
+
+Install Docker and Python.
+
+To start an experiment, run
+$ bash start_experiment.sh
+
+NOTE that this will create a /tmp/fluent-memory-leak12345 repo on your machine.
