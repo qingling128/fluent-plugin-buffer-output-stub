@@ -43,7 +43,7 @@ class LogGenerator(object):
     """
     self._log_rate = log_rate
     self._log_record = self._random_string(log_size_in_bytes)
-    self._log_file_path = log_file_path
+    self._log_file_path = '{}-{}-'.format(log_file_path, random.randint(1,9999))
 
   def _random_string(self, size, chars=None):
     """Generates a random string as the log message.
@@ -65,9 +65,10 @@ class LogGenerator(object):
 
     This should be executed every second. Retry if failed.
     """
-    with open(self._log_file_path, 'a') as log_file:
-      for _ in range(self._log_rate):
-        log_file.write(self._log_record + '\n')
+    for i in range(30):
+      with open('{}-{}.log'.format(self._log_file_path, i), 'a') as log_file:
+        for _ in range(self._log_rate):
+          log_file.write(self._log_record + '\n')
 
 
 def schedule_event_and_send_logs(scheduler, log_generator_instance):
@@ -94,7 +95,7 @@ parser.add_argument(
     '--log-rate', type=int, default=34,
     help='The number of expected log entries per second for fixed-rate logs.')
 parser.add_argument(
-    '--log-file-path', type=str, default='/tmp/memory-leak/test.log',
+    '--log-file-path', type=str, default='/tmp/memory-leak/test',
     help='The path of the file to write logs to.')
 args = parser.parse_args()
 
