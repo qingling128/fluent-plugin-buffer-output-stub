@@ -22,7 +22,7 @@ cd $TEST_DIR/fluent-plugin-buffer-output-stub/docker
 DOCKER_IMAGE_ID=`docker build --no-cache . | tail -n 1 | sed 's/Successfully built //g'`
 
 # Start the Log Generator.
-nohup python $TEST_DIR/fluent-plugin-buffer-output-stub/log_generator.py --log-rate=34 --log-file-path="$TEST_DIR/test" &
+nohup python $TEST_DIR/fluent-plugin-buffer-output-stub/log_generator.py --log-rate=1000 --log-file-path="$TEST_DIR/test" &
 sleep 2
 chmod 777 $TEST_DIR/*.log
 
